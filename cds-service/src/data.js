@@ -78,7 +78,7 @@ var recommendations = {
   // cardinality of *1 allele = [0, 1, 2]
   "1155002": {
     "0": "Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.",
-    "1": 'concentrations of TGN metabolites; low concentrations of methylTIMP	If disease treatment normally starts at the "full dose", consider starting at 30-70% of target dose (e.g., 1-1.5 mg/kg/d), and titrate based on tolerance. Allow 2-4 weeks to reach steady state after each dose adjustment.',
+    "1": 'If disease treatment normally starts at the "full dose", consider starting at 30-70% of target dose (e.g., 1-1.5 mg/kg/d), and titrate based on tolerance. Allow 2-4 weeks to reach steady state after each dose adjustment.',
     "2": "Start with normal starting dose (e.g., 2-3 mg/kg/d) and adjust doses of azathioprine based on disease-specific guidelines. Allow 2 weeks to reach steady state after each dose adjustment."
   },
   "1165711": {
