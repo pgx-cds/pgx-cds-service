@@ -1,6 +1,7 @@
 /*jslint node: true */
 "use strict";
 
+/*
 var diplotypes = {
   // identifiers are patient IDs
   "1288992":{"tpmt":"*1/*1"},
@@ -35,7 +36,7 @@ var diplotypes = {
   "2113340":{"tpmt":"*4/*3C"},
   "2169591":{"tpmt":"*4/*4"}
 };
-
+*/
 
 var ingredients = {
   // all identifiers are RXNorm codes
@@ -95,7 +96,7 @@ var recommendations = {
 
 // used by NodeJS
 module.exports = {
-    diplotypes: diplotypes,
+    //diplotypes: diplotypes,
     ingredients: ingredients,
     ingredients_map: ingredients_map,
     recommendations: recommendations
