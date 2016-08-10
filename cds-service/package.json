@@ -5,15 +5,17 @@
   "main": "./src/index.js",
   "scripts": {
     "watch": "./node_modules/.bin/nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "update-rxnorm": "node ./src/rxnorm/update.js"
   },
   "author": "MedAppTech",
   "dependencies": {
     "body-parser": "^1.15.1",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "morgan": "^1.7.0",
     "request": "^2.73.0",
-    "morgan": "^1.7.0"
+    "q": "^1.4.1"
   },
   "devDependencies": {
     "nodemon": "^1.9.2"

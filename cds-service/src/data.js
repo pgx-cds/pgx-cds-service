@@ -2,6 +2,27 @@
 "use strict";
 
 /*
+exports.recommendations = {
+  // cardinality of *1 allele = [0, 1, 2]
+  "1155002": { //Azathioprine
+    "0": "Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.",
+    "1": 'If disease treatment normally starts at the "full dose", consider starting at 30-70% of target dose (e.g., 1-1.5 mg/kg/d), and titrate based on tolerance. Allow 2-4 weeks to reach steady state after each dose adjustment.',
+    "2": "Start with normal starting dose (e.g., 2-3 mg/kg/d) and adjust doses of azathioprine based on disease-specific guidelines. Allow 2 weeks to reach steady state after each dose adjustment."
+  },
+  "1165711": { //mercaptopurine
+    "0": "For malignancy, start with drastically reduced doses (reduce daily dose by 10-fold and reduce frequency to thrice weekly instead of daily, e.g., 10 mg/m2/d given just 3 days/week) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing mercaptopurine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
+    "1": "Start with reduced doses (start at 30-70% of full dose: e.g., at 50 mg/m2/d or 0.75 mg/kg/d) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In those who require a dosage reduction based on myelosuppression, the median dose may be ~40% lower (44 mg/m2) than that tolerated in wild-type patients (75 mg/m2). In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing mercaptopurine over other agents.",
+    "2": "Start with normal starting dose (e.g., 75 mg/m2/d or 1.5 mg/kg/d) and adjust doses of mercaptopurine (and of any other myelosuppressive therapy) without any special emphasis on mercaptopurine compared to other agents. Allow 2 weeks to reach steady state after each dose adjustment."
+  },
+  "1165527": { //Thioguanine
+    "0": "Start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing thioguanine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
+    "1": "Start with reduced doses (reduce by 30-50%) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing thioguanine over other agents.",
+    "2": "Start with normal starting dose. Adjust doses of thioguanine and of other myelosuppressive therapy without any special emphasis on thioguanine . Allow 2 weeks to reach steady state after each dose adjustment."
+  }
+};
+*/
+
+/*
 var diplotypes = {
   // identifiers are patient IDs
   "1288992":{"tpmt":"*1/*1"},
@@ -36,7 +57,6 @@ var diplotypes = {
   "2113340":{"tpmt":"*4/*3C"},
   "2169591":{"tpmt":"*4/*4"}
 };
-*/
 
 var ingredients = {
   // all identifiers are RXNorm codes
@@ -74,30 +94,4 @@ var ingredients_map = {
   "197931": "1165711",
   "198269": "1165527"
 };
-
-var recommendations = {
-  // cardinality of *1 allele = [0, 1, 2]
-  "1155002": {
-    "0": "Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.",
-    "1": 'If disease treatment normally starts at the "full dose", consider starting at 30-70% of target dose (e.g., 1-1.5 mg/kg/d), and titrate based on tolerance. Allow 2-4 weeks to reach steady state after each dose adjustment.',
-    "2": "Start with normal starting dose (e.g., 2-3 mg/kg/d) and adjust doses of azathioprine based on disease-specific guidelines. Allow 2 weeks to reach steady state after each dose adjustment."
-  },
-  "1165711": {
-    "0": "For malignancy, start with drastically reduced doses (reduce daily dose by 10-fold and reduce frequency to thrice weekly instead of daily, e.g., 10 mg/m2/d given just 3 days/week) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing mercaptopurine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
-    "1": "Start with reduced doses (start at 30-70% of full dose: e.g., at 50 mg/m2/d or 0.75 mg/kg/d) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In those who require a dosage reduction based on myelosuppression, the median dose may be ~40% lower (44 mg/m2) than that tolerated in wild-type patients (75 mg/m2). In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing mercaptopurine over other agents.",
-    "2": "Start with normal starting dose (e.g., 75 mg/m2/d or 1.5 mg/kg/d) and adjust doses of mercaptopurine (and of any other myelosuppressive therapy) without any special emphasis on mercaptopurine compared to other agents. Allow 2 weeks to reach steady state after each dose adjustment."
-  },
-  "1165527": {
-    "0": "Start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing thioguanine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
-    "1": "Start with reduced doses (reduce by 30-50%) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing thioguanine over other agents.",
-    "2": "Start with normal starting dose. Adjust doses of thioguanine and of other myelosuppressive therapy without any special emphasis on thioguanine . Allow 2 weeks to reach steady state after each dose adjustment."
-  }
-};
-
-// used by NodeJS
-module.exports = {
-    //diplotypes: diplotypes,
-    ingredients: ingredients,
-    ingredients_map: ingredients_map,
-    recommendations: recommendations
-};
+*/

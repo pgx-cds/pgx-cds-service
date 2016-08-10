@@ -1,0 +1,3 @@
+[submodule "process/umls"]
+	path = process/umls
+	url = https://github.com/chb/py-umls

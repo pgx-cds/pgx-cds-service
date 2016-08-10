@@ -1,0 +1,38 @@
+{
+    "153129": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 10 MG Oral Tablet"
+    }, 
+    "197388": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 50 MG Oral Tablet"
+    }, 
+    "197931": {
+        "ingredient": "1165711", 
+        "name": "mercaptopurine 50 MG Oral Tablet"
+    }, 
+    "198269": {
+        "ingredient": "1165527", 
+        "name": "Thioguanine 40 MG Oral Tablet"
+    }, 
+    "199310": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 25 MG Oral Tablet"
+    }, 
+    "199766": {
+        "ingredient": "1165711", 
+        "name": "mercaptopurine 10 MG Oral Tablet"
+    }, 
+    "359228": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 100 MG Oral Tablet"
+    }, 
+    "359229": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 75 MG Oral Tablet"
+    }, 
+    "410148": {
+        "ingredient": "1155002", 
+        "name": "Azathioprine 250 MG Oral Capsule"
+    }
+}

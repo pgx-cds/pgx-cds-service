@@ -1,11 +1,11 @@
 /*jslint node: true */
 "use strict";
 
-var request = require('request');
-var data = require('./data');
-//var diplotypes = data.diplotypes;
-var ingredients_map = data.ingredients_map;
-var recommendations = data.recommendations;
+var Q = require('q');
+var fhir_js = require("../lib/fhir-node");
+var ingredients = require('../data/ingredients.json');
+var recommendations = require('../data/recommendations.json');
+var config = require('./config');
 
 function match (e) {
     try {
@@ -18,25 +18,32 @@ function match (e) {
     }
  }
 
-function pgxRecommendation (pid, rxnorm, callback) {
-  var base ='http://pgx-fhir.smarthealthit.org:8080/baseDstu2';
-  var url = base + '/Observation?patient=smart-' + pid + '&code=http%3A%2F%2Fsnomed.info%2Fsct%7C363779003';
-  request({url:url, headers:{'accept':'application/json+fhir'}},
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-            var e = data.entry.find(match);
-            var diplotype = e && e.resource.valueString;
-            //console.log("Diplotype", diplotype);
-            //var diplotype = diplotypes[pid] && diplotypes[pid].tpmt;
-            var cardinality = occurrences(diplotype, "*1");
-            var ingredient = ingredients_map[rxnorm];
-            callback(ingredient && recommendations[ingredient][cardinality]);
-        }
-    });
+// Converts sample patient ID to HAPI-compliant ID (hack)
+function convertID (id) {
+    return "smart-" + id;
 }
 
-// used by NodeJS
+function pgxRecommendation (pid, rxnorm) {
+  var deferred = Q.defer();
+  var conf = {
+    baseUrl: config.FHIRBase,
+    patient: convertID(pid)
+  };
+  var fhir = fhir_js(conf);
+  fhir.search({type: 'Observation', query: {code: 'http://snomed.info/sct|363779003'}})
+    .then(function(bundle){
+      var e = bundle.data.entry.find(match);
+      var diplotype = e && e.resource.valueString;
+      var cardinality = occurrences(diplotype, "*1");
+      var ingredient = ingredients[rxnorm].ingredient ;
+      var result = ingredient && recommendations.rxnorm_interactions[ingredient].normal_alleles[cardinality];
+      deferred.resolve(result);
+    }, function(err) {
+      deferred.reject(new Error(err));
+    });
+  return deferred.promise;
+}
+
 module.exports = {
     pgxRecommendation: pgxRecommendation
 };
