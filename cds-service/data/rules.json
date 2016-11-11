@@ -6,15 +6,15 @@
 			"alleles-or-genotypes": "*1/*2; *1/*3A; *1/*3B; *1/*3C; *3B/*3C; *1/*8",
 			"rxnorm_interactions": {
 				"1155002": {
-					"name": "Azathioprine",
+					"medication": "Azathioprine",
 					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of azathioprine.  Patients with TPMT deficiency MAY require REDUCED doses of azathioprine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
 				},
 				"1165711": {
-					"name": "Mercaptopurine",
+					"medication": "Mercaptopurine",
 					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of mercaptopurine.  Patients with TPMT deficiency MAY require REDUCED doses of mercaptopurine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
 				},
 				"1165527": {
-					"name": "Thioguanine",
+					"medication": "Thioguanine",
 					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of thioguanine.  Patients with TPMT deficiency MAY require REDUCED doses of thioguanine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
 				}
 			}
