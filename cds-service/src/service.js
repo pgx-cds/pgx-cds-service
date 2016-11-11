@@ -1,50 +1,66 @@
 /*jslint node: true */
 "use strict";
 
-var Q = require('q');
 var router = require("express").Router();
 var bodyParser = require("body-parser");
 var config = require('./config');
 var pgxRecommendation = require('./pgx').pgxRecommendation;
+var nunjucks = require('nunjucks');
 
 module.exports = router;
+
+function getPatientName (pt) {
+    if (pt.name) {
+        var names = pt.name.map(function(name) {
+            return name.given.join(" ") + " " + name.family.join(" ");
+        });
+        return names.join(" / ");
+    } else {
+        return "anonymous";
+    }
+}
 
 router.post("/pgx", bodyParser.json({}), function(req, res) {
     var data = req.body || [];
     var cards = [];
-    var pid = data.patient;
-    var def = Q.defer();
-    def.resolve();
-    def = def.promise;
+    var problems = data.prefetch.problems.resource.entry;
+    var patient = {name: getPatientName(data.prefetch.patient.resource)};
 
-    //console.log(JSON.stringify(data,null,"  "));
+    //console.log(JSON.stringify(problems,null,"  "));
 
-    data.context.filter(function(e){
-        return e.resourceType === "MedicationOrder" && e.medicationCodeableConcept;
-    }).forEach(function (med){
-        var rxnorm = med.medicationCodeableConcept.coding.find(function(e){
-                return e.system === "http://www.nlm.nih.gov/research/umls/rxnorm";
-            }).code;
-        def = def.then(function(){
-            var deferred = Q.defer();
-            pgxRecommendation(pid, rxnorm).then(function (recommendation) {
-                if (recommendation) {
-                    cards.push ({
-                        summary: "PGX Recommendation",
-                        detail: recommendation,
-                        indicator: "info"
-                    });
-                }
-                deferred.resolve();
+    var problemCodes = [].concat.apply([], problems.map(function (problem) {
+        return problem.resource.code.coding.filter(function(coding){
+                return coding.system === "http://snomed.info/sct";
+            }).map(function (coding) {
+                return coding.code;
             });
-            return deferred.promise;
+    }));
+
+    var medCodes = [].concat.apply([], data.context.filter(function(e){
+            return e.resourceType === "MedicationOrder" && e.medicationCodeableConcept;
+        }).map(function (med){
+            return med.medicationCodeableConcept.coding.filter(function(e){
+                    return e.system === "http://www.nlm.nih.gov/research/umls/rxnorm";
+                }).map(function (coding) {
+                    return coding.code;
+                });
+    }));
+
+    problemCodes.forEach(function (problemCode){
+        medCodes.forEach(function (medCode){
+            var recommendation = pgxRecommendation(problemCode, medCode);
+            if (recommendation) {
+                cards.push ({
+                    summary: recommendation.title,
+                    detail: nunjucks.renderString(recommendation.message, {patient: patient}),
+                    indicator: "warning"
+                });
+            }
         });
     });
 
-    def.then(function(){
-        res.json({
-           cards: cards
-        });
+    res.json({
+       cards: cards
     });
 });
 
@@ -54,7 +70,11 @@ router.get("/", function(req, res) {
             hook: "medication-prescribe",
             name: "PGX Service",
             description: "CDS service that displays pharmacogenomics recommendations",
-            id: "pgx"
+            id: "pgx",
+            "prefetch": {
+              "patient": "Patient/{{Patient.id}}",
+              "problems": "Condition?patient={{Patient.id}}"
+            }
         }]
     });
 });

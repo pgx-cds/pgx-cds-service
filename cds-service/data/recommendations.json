@@ -1,29 +1,79 @@
 {
-  "gene": "TPMT",
-  "rxnorm_interactions": {
-    "1155002": {
-      "name": "Azathioprine",
-      "normal_alleles": {
-        "0": "Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.",
-        "1": "If disease treatment normally starts at the \"full dose\", consider starting at 30-70% of target dose (e.g., 1-1.5 mg/kg/d), and titrate based on tolerance. Allow 2-4 weeks to reach steady state after each dose adjustment.",
-        "2": "Start with normal starting dose (e.g., 2-3 mg/kg/d) and adjust doses of azathioprine based on disease-specific guidelines. Allow 2 weeks to reach steady state after each dose adjustment."
-      }
-    },
-    "1165711": {
-      "name": "mercaptopurine",
-      "normal_alleles": {
-        "0": "For malignancy, start with drastically reduced doses (reduce daily dose by 10-fold and reduce frequency to thrice weekly instead of daily, e.g., 10 mg/m2/d given just 3 days/week) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing mercaptopurine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
-        "1": "Start with reduced doses (start at 30-70% of full dose: e.g., at 50 mg/m2/d or 0.75 mg/kg/d) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In those who require a dosage reduction based on myelosuppression, the median dose may be ~40% lower (44 mg/m2) than that tolerated in wild-type patients (75 mg/m2). In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing mercaptopurine over other agents.",
-        "2": "Start with normal starting dose (e.g., 75 mg/m2/d or 1.5 mg/kg/d) and adjust doses of mercaptopurine (and of any other myelosuppressive therapy) without any special emphasis on mercaptopurine compared to other agents. Allow 2 weeks to reach steady state after each dose adjustment."
-      }
-    },
-    "1165527": {
-      "name": "Thioguanine",
-      "normal_alleles": {
-        "0": "Start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing thioguanine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.",
-        "1": "Start with reduced doses (reduce by 30-50%) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 2-4 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, and depending on other therapy, emphasis should be on reducing thioguanine over other agents.",
-        "2": "Start with normal starting dose. Adjust doses of thioguanine and of other myelosuppressive therapy without any special emphasis on thioguanine . Allow 2 weeks to reach steady state after each dose adjustment."
-      }
-    }
-  }
+	"problem-snomed-code": {
+		"356744012": {
+			"gene": "TPMT",
+			"description": "TPMT - Thiopurine methyltransferase deficiency",
+			"alleles-or-genotypes": "*1/*2; *1/*3A; *1/*3B; *1/*3C; *3B/*3C; *1/*8",
+			"rxnorm_interactions": {
+				"1155002": {
+					"name": "Azathioprine",
+					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of azathioprine.  Patients with TPMT deficiency MAY require REDUCED doses of azathioprine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
+				},
+				"1165711": {
+					"name": "Mercaptopurine",
+					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of mercaptopurine.  Patients with TPMT deficiency MAY require REDUCED doses of mercaptopurine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
+				},
+				"1165527": {
+					"name": "Thioguanine",
+					"message": "{{patient.name}} has a documented problem of Thiopurine Methyltransferase (TPMT) deficiency.  TPMT is the enzyme responsible for the metabolism of thioguanine.  Patients with TPMT deficiency MAY require REDUCED doses of thioguanine.<br/><br/>Please page the Pharmacogenomics Service (pager #7454) if further information is required."
+				}
+			}
+		},
+		"2644263015": {
+			"gene": "CYP2C19",
+			"description": "Disorder due cytochrome p450 CYP2C19 variant",
+			"alleles-or-genotypes": "*1/*17; *17/*17",
+			"rxnorm_interactions": {}
+		},
+		"2644363018": {
+			"gene": "CYP2C19",
+			"description": "Poor metabolizer due to cytochrome P450 CYP2C19 variant",
+			"alleles-or-genotypes": "*2/*17; *1/*2; *1/*3; *2/*2; *3/*3",
+			"rxnorm_interactions": {}
+		},
+		"2644362011": {
+			"gene": "CYP2C9",
+			"description": "Poor metabolizer due to cytochrome P450 CYP2C9 variant",
+			"alleles-or-genotypes": "*1/*2; *1/*3; *2/*2; *3/*3",
+			"rxnorm_interactions": {}
+		},
+		"208895015": {
+			"gene": "VKORC1",
+			"description": "Vitamin-K-epoxide reductase (warfarin-insensitive)",
+			"rs-number": "rs9923231",
+			"alleles-or-genotypes": "any that require 'increased' doses",
+			"rxnorm_interactions": {}
+		},
+		"208894016": {
+			"gene": "VKORC1",
+			"description": "Vitamin-K-epoxide reductase (warfarin-sensitive)",
+			"rs-number": "rs9923231",
+			"alleles-or-genotypes": "any that require 'reduced' doses",
+			"rxnorm_interactions": {}
+		},
+		"2791814012": {
+			"gene": "HLA-B*15:02",
+			"description": "Human leukocyte antigen (HLA) B 1502 antigen present",
+			"alleles-or-genotypes": "pos",
+			"rxnorm_interactions": {}
+		},
+		"99209019": {
+			"gene": "HLA-A*31:01",
+			"description": "HLA-A31 antigen",
+			"alleles-or-genotypes": "pos",
+			"rxnorm_interactions": {}
+		},
+		"387362017": {
+			"gene": "HLA-B*58:01",
+			"description": "HLA - Human leukocyte antigen B58(17)",
+			"alleles-or-genotypes": "pos",
+			"rxnorm_interactions": {}
+		},
+		"2792545016": {
+			"gene": "HLA-B*57:01",
+			"description": "Human leukocyte antigen (HLA) B 5701 antigen present",
+			"alleles-or-genotypes": "pos",
+			"rxnorm_interactions": {}
+		}
+	}
 }

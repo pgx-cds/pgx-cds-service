@@ -13,7 +13,13 @@ if filename is None:
 with open(filename) as data_file:
     data = json.load(data_file)
 
-rxcuis = data['rxnorm_interactions'].keys()
+problems = data["problem-snomed-code"]
+rxcuis = []
+
+for problem in problems:
+    for rxnorm in problems[problem]['rxnorm_interactions'].keys():
+        if rxnorm not in rxcuis:
+            rxcuis.append (rxnorm)
 
 look = RxNormLookup()
 res = {}
