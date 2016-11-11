@@ -4,7 +4,7 @@
 var ingredients = require('../data/ingredients.json');
 var rules = require('../data/rules.json');
 
-function pgxRecommendation (condition, rxnorm) {
+function getRecommendation (condition, rxnorm) {
     //console.log(condition,rxnorm);
     var ingredient = ingredients[rxnorm] && ingredients[rxnorm].ingredient;
     var rec = rules["problem-snomed-code"][condition];
@@ -16,6 +16,11 @@ function pgxRecommendation (condition, rxnorm) {
     }
 }
 
+function getConditionCodes () {
+    return Object.keys(rules["problem-snomed-code"]);
+}
+
 module.exports = {
-    pgxRecommendation: pgxRecommendation
+    getRecommendation: getRecommendation,
+    getConditionCodes: getConditionCodes
 };
