@@ -1,8 +1,8 @@
 {
-  "name": "pgx-cds-service",
+  "name": "pgx-cds-service-bch",
   "author": "MedAppTech",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "PGX CDS Service - Boston Children's Hospital",
   "main": "./src/index.js",
   "scripts": {
     "watch": "./node_modules/.bin/nodemon ./src/index.js",
@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
-  }
+  },
+  "engine": "node >= 4.2.6"
 }
