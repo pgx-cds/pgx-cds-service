@@ -1,6 +1,6 @@
 {
   "name": "pgx-cds-service-bch",
-  "author": "MedAppTech",
+  "author": "Interopion Inc",
   "version": "0.1.0",
   "description": "PGX CDS Service - Boston Children's Hospital",
   "main": "./src/index.js",
