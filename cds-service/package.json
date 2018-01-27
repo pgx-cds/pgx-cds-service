@@ -1,14 +1,13 @@
 {
   "name": "pgx-cds-service",
+  "author": "Interopion Inc",
   "version": "0.0.1",
-  "description": "",
+  "description": "PGX CDS Service",
   "main": "./src/index.js",
   "scripts": {
     "watch": "./node_modules/.bin/nodemon ./src/index.js",
-    "start": "node ./src/index.js",
-    "update-rxnorm": "node ./src/rxnorm/update.js"
+    "start": "node ./src/index.js"
   },
-  "author": "MedAppTech",
   "dependencies": {
     "body-parser": "^1.15.1",
     "cors": "^2.7.1",
@@ -19,5 +18,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
-  }
+  },
+  "engine": "node >= 4.2.6"
 }
